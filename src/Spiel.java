@@ -1,5 +1,5 @@
 public class Spiel {
-    public Spiel() {
+    public static void main(String[] args) {
         Spieler spieler1 = new Spieler(this);
         Spieler spieler2 = new Spieler(this);
         Topf topf = new Topf();
