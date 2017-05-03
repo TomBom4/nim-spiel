@@ -1,7 +1,8 @@
+import java.util.Scanner;
+
 public class Spiel {
 
     Spieler spieler1, spieler2;
-    Topf topf;
     Schachtel schachtel;
 
     Spiel(Spieler spieler1, Spieler spieler2) {
@@ -10,14 +11,15 @@ public class Spiel {
 
     public static void main(String[] args) {
 
+        // Spieler nach Namen fragen:
+        Scanner scanner = new Scanner(System.in);
 
-        new Spiel();
+        System.out.println("Name von Spieler 1: ");
 
-        Spieler spieler1 = new Spieler(this);
-        Spieler spieler2 = new Spieler(this);
+        Spieler spieler1 = new Spieler();
+        Spieler spieler2 = new Spieler();
 
-        Topf topf = new Topf();
-        Schachtel schachtel;
+
 
         schachtel = spieler1.beginnen();
 
@@ -27,5 +29,7 @@ public class Spiel {
                 spieler2.ziehen();
             }
         }
+
+        // spiel gewinnt
     }
 }

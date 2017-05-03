@@ -1,10 +1,21 @@
 
 public class Spieler {
 
+    public final String name;
+
     public int anzahlMuenzen;
 
-    public Spieler(int anzahlMuenzen) {
+    public Spieler(String name, int anzahlMuenzen) {
         this.anzahlMuenzen = anzahlMuenzen;
+        this.name = name;
+    }
+
+    public void setMuenzen(int n) {
+        this.anzahlMuenzen = n;
+    }
+
+    public void muenzenHinzufuegen(int n) {
+        this.anzahlMuenzen += n;
     }
 
     public void ziehen(Spiel spiel) {
