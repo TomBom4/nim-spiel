@@ -15,9 +15,13 @@ public class Spiel {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Name von Spieler 1: ");
+        String name1 = scanner.next();
 
-        Spieler spieler1 = new Spieler();
-        Spieler spieler2 = new Spieler();
+        System.out.println("Name von Spieler 2: ");
+        String name2 = scanner.next();
+
+        Spieler spieler1 = new Spieler(name1);
+        Spieler spieler2 = new Spieler(name2);
 
 
 
