@@ -20,12 +20,9 @@ public class Spiel {
         System.out.println("Name von Spieler 2: ");
         String name2 = scanner.next();
 
-        Spieler spieler1 = new Spieler(name1);
-        Spieler spieler2 = new Spieler(name2);
+        Spieler spieler1 = new Spieler(name1, 3);
+        Spieler spieler2 = new Spieler(name2, 3);
 
-
-
-        schachtel = spieler1.beginnen();
 
         while (schachtel.hoelzchen() > 0) {
             spieler1.ziehen();

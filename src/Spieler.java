@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Spieler {
 
@@ -27,9 +28,13 @@ public class Spieler {
     }
 
     public void beginnen() {
-        // TODO: 1. Spieler nach Anzahl der Hölzchen (10 - 40) fragen
-        int n = 10;
-        Schachtel.hoelzchenSetzen(n);
+        Scanner scanner = new Scanner(System.in);
+        int n;
+
+        do {
+            System.out.println(name + ": Wie viele Hölzchen legst du in die Schachtel? (10-40)");
+            n = scanner.nextInt();
+        } while (n < 10 || n > 40);
     }
 
 
