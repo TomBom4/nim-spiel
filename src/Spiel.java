@@ -63,25 +63,24 @@ public class Spiel {
                 spieler1.name + ": " + spieler1.getAnzahlMuenzen() + "Münzen");
 
 
+        boolean turn1 = true;
+
         while(schachtel.getHoelzchen() > 0)
         {
+            System.out.printf("Es sind " + schachtel.getHoelzchen() + " Hölzchen in der Schachtel.");
+
             int n;
             do {
-                n = spieler1.ziehen();
+                if(turn1) {
+                    n = spieler1.ziehen();
+                } else {
+                    n = spieler2.ziehen();
+                }
             } while (n >= 1 && n <= 3 );
 
             schachtel.hoelzchenZiehen(n);
 
-            if (schachtel.getHoelzchen() > 1) {
-                break;
-            }
-
-            n = 0;
-            do {
-                n = spieler2.ziehen();
-            } while (n >= 1 && n <= 3 );
-
-            schachtel.hoelzchenZiehen(n);
+            turn1 = !turn1;
         }
     }
 
