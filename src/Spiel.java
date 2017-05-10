@@ -15,7 +15,6 @@ public class Spiel {
     }
 
     public static void main(String[] args) {
-
         // Spieler nach Namen fragen:
         Scanner scanner = new Scanner(System.in);
 
@@ -47,10 +46,43 @@ public class Spiel {
             spieler1Beginnt = !spieler1Beginnt;
         }
 
-        if (spieler1.getAnzahlMuenzen() > 0)
-            {
-                System.out.printf(spieler1.getName() + " hat gewonnen!");
-            }
+        if (spieler1.getAnzahlMuenzen() > 0) {
+            System.out.printf(spieler1.getName() + " hat gewonnen!");
+        } else {
+            System.out.printf(spieler2.getName() + " hat gewonnen!");
+        }
+
+        System.out.println(
+
+                        "                         .-.\n" +
+                        "                         '-'\n" +
+                        "                        //\n" +
+                        "               _..---._/|\n" +
+                        "             .' .\"     '-.\n" +
+                        "            /__/          \\      *\n" +
+                        "           ====_____     __|     :\n" +
+                        "          /#   #\"\"\" |   /()\\    :    ..*\n" +
+                        "          |#   #    |   \\__/    : .'' \n" +
+                        "          \\#___#____|      /   :::.. .\n" +
+                        "           \\______________|_...‰_: .. '*\n" +
+                        "  ()       // /\\||||)))))))      '   . .\n" +
+                        " .( \\_     \\\\_\\//   _-'.'/        |   * ..\n" +
+                        "( )  |^|^|^|ooo/  _#\\.//\"\"\"_      |   . . .\n" +
+                        "(_)_.'v|v|v|     / \\#  \\_ / '_  _'    . .  \n" +
+                        "           | _ _/_/     /'./_-|\"         . .\n" +
+                        "           /#_#__\"\"\"-._ /#  \\__)       .  .   \n" +
+                        "           |__   \"\"-._ |##               . . .\n" +
+                        "           |  \"\"|-\"\"\"-_/##              . .    \n" +
+                        "           /\"\"--\\__.-|                       .\n" +
+                        "           \\-_.-<__ /                   .   .\n" +
+                        "           /-_| /  \\\n" +
+                        "           \\-_| \\_-<.                        .  .\n" +
+                        "           <_-/ <_.-\\                    .\n" +
+                        "           <_-|  |_.-|                        .\n" +
+                        "      .----|   \\__\\  |                 .\n" +
+                        "     |     .\"\"\"   '.  |                       .\n" +
+                        "      .___|        |__|                 \n" +
+                        "          '.__...\"\"\"  \n");
     }
 
     public Schachtel getSchachtel() {
