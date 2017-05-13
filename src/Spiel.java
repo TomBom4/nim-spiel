@@ -2,16 +2,13 @@ import java.util.Scanner;
 
 public class Spiel {
 
-    Spieler spieler1, spieler2;
+    Spieler erster, zweiter;
     Schachtel schachtel;
 
-    Spiel(Spieler spieler1, Spieler spieler2, Schachtel schachtel) {
-        this.spieler1 = spieler1;
-        this.spieler2 = spieler2;
-    }
-
-    Spiel(Spieler spieler1, Spieler spieler2) {
-        new Spiel(spieler1, spieler2, spieler1.hoelzchenLegen());
+    Spiel(Spieler erster, Spieler zweiter, Schachtel schachtel) {
+        this.erster = erster;
+        this.zweiter = zweiter;
+        this.schachtel = schachtel;
     }
 
     public static void main(String[] args) {
@@ -31,58 +28,28 @@ public class Spiel {
         boolean spieler1Beginnt = true;
 
         while (spieler1.getAnzahlMuenzen() > 0 && spieler2.getAnzahlMuenzen() > 0) {
-            Spiel spiel;
 
             if (spieler1Beginnt) {
                 System.out.println(spieler1.getName() + " beginnt.");
-                spiel = new Spiel(spieler1, spieler2);
+                spielen(spieler1, spieler2);
             } else {
                 System.out.println(spieler2.getName() + " beginnt.");
-                spiel = new Spiel(spieler2, spieler2);
+                spielen(spieler2, spieler1);
             }
-
-            spiel.spielen();
 
             spieler1Beginnt = !spieler1Beginnt;
         }
 
         if (spieler1.getAnzahlMuenzen() > 0) {
-            System.out.printf(spieler1.getName() + " hat gewonnen!");
+            System.out.printf(spieler1.getName() + " hat das Spiel gewonnen!");
         } else {
-            System.out.printf(spieler2.getName() + " hat gewonnen!");
+            System.out.printf(spieler2.getName() + " hat das Spiel gewonnen!");
         }
+    }
 
-        System.out.println(
-
-                        "                         .-.\n" +
-                        "                         '-'\n" +
-                        "                        //\n" +
-                        "               _..---._/|\n" +
-                        "             .' .\"     '-.\n" +
-                        "            /__/          \\      *\n" +
-                        "           ====_____     __|     :\n" +
-                        "          /#   #\"\"\" |   /()\\    :    ..*\n" +
-                        "          |#   #    |   \\__/    : .'' \n" +
-                        "          \\#___#____|      /   :::.. .\n" +
-                        "           \\______________|_...‰_: .. '*\n" +
-                        "  ()       // /\\||||)))))))      '   . .\n" +
-                        " .( \\_     \\\\_\\//   _-'.'/        |   * ..\n" +
-                        "( )  |^|^|^|ooo/  _#\\.//\"\"\"_      |   . . .\n" +
-                        "(_)_.'v|v|v|     / \\#  \\_ / '_  _'    . .  \n" +
-                        "           | _ _/_/     /'./_-|\"         . .\n" +
-                        "           /#_#__\"\"\"-._ /#  \\__)       .  .   \n" +
-                        "           |__   \"\"-._ |##               . . .\n" +
-                        "           |  \"\"|-\"\"\"-_/##              . .    \n" +
-                        "           /\"\"--\\__.-|                       .\n" +
-                        "           \\-_.-<__ /                   .   .\n" +
-                        "           /-_| /  \\\n" +
-                        "           \\-_| \\_-<.                        .  .\n" +
-                        "           <_-/ <_.-\\                    .\n" +
-                        "           <_-|  |_.-|                        .\n" +
-                        "      .----|   \\__\\  |                 .\n" +
-                        "     |     .\"\"\"   '.  |                       .\n" +
-                        "      .___|        |__|                 \n" +
-                        "          '.__...\"\"\"  \n");
+    public static void spielen(Spieler erster, Spieler zweiter) {
+        Schachtel schachtel = erster.hoelzchenLegen();
+        new Spiel(erster, zweiter, schachtel).spielen();
     }
 
     public Schachtel getSchachtel() {
@@ -91,28 +58,36 @@ public class Spiel {
 
     public void spielen() {
 
-        System.out.println(spieler1.name + ": " + spieler1.getAnzahlMuenzen() + "Münzen\t" +
-                spieler1.name + ": " + spieler1.getAnzahlMuenzen() + "Münzen");
+        System.out.println(erster.getName() + ": " + erster.getAnzahlMuenzen() + " Münzen\t\t" +
+                zweiter.getName() + ": " + zweiter.getAnzahlMuenzen() + " Münzen");
 
 
         boolean turn1 = true;
 
         while(schachtel.getHoelzchen() > 0)
         {
-            System.out.printf("Es sind " + schachtel.getHoelzchen() + " Hölzchen in der Schachtel.");
+            System.out.println("Es sind " + schachtel.getHoelzchen() + " Hölzchen in der Schachtel.");
 
             int n;
             do {
                 if(turn1) {
-                    n = spieler1.ziehen();
+                    n = erster.ziehen();
                 } else {
-                    n = spieler2.ziehen();
+                    n = zweiter.ziehen();
                 }
-            } while (n >= 1 && n <= 3 );
+            } while (n < 1 || n > 3 );
 
             schachtel.hoelzchenZiehen(n);
 
             turn1 = !turn1;
+        }
+
+        if(turn1) {
+            System.out.println(zweiter.getName() + " hat das letzte Hölzchen gezogen und damit diese Runde verloren.");
+            zweiter.muenzeGeben(erster);
+        } else {
+            System.out.println(erster.getName() + " hat das letzte Hölzchen gezogen und damit diese Runde verloren.");
+            erster.muenzeGeben(zweiter);
         }
     }
 

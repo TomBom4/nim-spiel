@@ -1,8 +1,9 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Spieler {
 
-    public final String name;
+    public String name;
 
     public int anzahlMuenzen;
 
@@ -27,13 +28,22 @@ public class Spieler {
         this.anzahlMuenzen += n;
     }
 
+    public void muenzeGeben(Spieler spieler) {
+        muenzenHinzufuegen(-1);
+        spieler.muenzenHinzufuegen(1);
+    }
 
     public int ziehen() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(getName() + ": Wie viele Hölzchen ziehst du? (1-3)");
+        int n = 0;
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
 
-        return scanner.nextInt();
+        }
+        return n;
     }
 
     public Schachtel hoelzchenLegen () {
