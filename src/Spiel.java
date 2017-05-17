@@ -28,6 +28,8 @@ public class Spiel {
         boolean spieler1Beginnt = true;
 
         while (spieler1.getAnzahlMuenzen() > 0 && spieler2.getAnzahlMuenzen() > 0) {
+            System.out.println(spieler1.getName() + ": " + spieler1.getAnzahlMuenzen() + " Münzen\t\t" +
+                    spieler2.getName() + ": " + spieler2.getAnzahlMuenzen() + " Münzen");
 
             if (spieler1Beginnt) {
                 System.out.println(spieler1.getName() + " beginnt.");
@@ -45,10 +47,12 @@ public class Spiel {
         } else {
             System.out.printf(spieler2.getName() + " hat das Spiel gewonnen!");
         }
+
+        System.out.println();
     }
 
     public static void spielen(Spieler erster, Spieler zweiter) {
-        Schachtel schachtel = erster.hoelzchenLegen();
+        Schachtel schachtel = zweiter.hoelzchenLegen();
         new Spiel(erster, zweiter, schachtel).spielen();
     }
 
@@ -57,11 +61,6 @@ public class Spiel {
     }
 
     public void spielen() {
-
-        System.out.println(erster.getName() + ": " + erster.getAnzahlMuenzen() + " Münzen\t\t" +
-                zweiter.getName() + ": " + zweiter.getAnzahlMuenzen() + " Münzen");
-
-
         boolean turn1 = true;
 
         while(schachtel.getHoelzchen() > 0)
