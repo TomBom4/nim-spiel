@@ -18,7 +18,7 @@ public class Spiel {
         System.out.println("Name von Spieler 1: ");
         String name1 = scanner.next();
 
-        System.out.println("Name von Spieler 2: ");
+        System.out.println("Name von Spieler 2: (oder \"computer\" eingeben");
         String name2 = scanner.next();
 
 
@@ -70,9 +70,9 @@ public class Spiel {
             int n;
             do {
                 if(turn1) {
-                    n = erster.ziehen();
+                    n = erster.ziehen(schachtel.getHoelzchen());
                 } else {
-                    n = zweiter.ziehen();
+                    n = zweiter.ziehen(schachtel.getHoelzchen());
                 }
             } while (n < 1 || n > 3 );
 
