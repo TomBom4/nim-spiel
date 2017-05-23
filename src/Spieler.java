@@ -61,25 +61,31 @@ public class Spieler {
                 }
             }
 
+            System.out.println("Der Computer zieht " + n + " Hölzchen");
+
             return n;
         } else {
             Scanner scanner = new Scanner(System.in);
 
             System.out.println(getName() + ": Wie viele Hölzchen ziehst du? (1-3)");
-            int n = 0;
             try {
                 return scanner.nextInt();
-            } catch (InputMismatchException e) {}
-            return n;
+            } catch (InputMismatchException e) {
+                return 0;
+            }
         }
     }
 
     public Schachtel hoelzchenLegen () {
         if (computer) {
+
             Random random = new Random();
-            int n = random.nextInt(7);
-            return new Schachtel(13 + n * 4);
+            int n = random.nextInt(7) * 4 + 13;
+            System.out.println("Der Computer legt " + n + " Hölzchen in die Schachtel");
+            return new Schachtel(n);
+
         } else {
+
         Scanner scanner = new Scanner(System.in);
         int n;
 
@@ -89,6 +95,7 @@ public class Spieler {
         } while (n < 10 || n > 40);
 
         return new Schachtel(n);
+
         }
     }
 

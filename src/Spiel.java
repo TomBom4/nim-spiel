@@ -18,7 +18,7 @@ public class Spiel {
         System.out.println("Name von Spieler 1: ");
         String name1 = scanner.next();
 
-        System.out.println("Name von Spieler 2: (oder \"computer\" eingeben");
+        System.out.println("Name von Spieler 2: (oder \"computer\" eingeben)");
         String name2 = scanner.next();
 
 
