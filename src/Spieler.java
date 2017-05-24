@@ -45,12 +45,12 @@ public class Spieler {
         if (computer) {
             int n;
             if (hoelzchen > 5) {
-                if ((hoelzchen + 3) % 4 == 0)
-                    n = 1;
+                if (hoelzchen % 4 == 3)
+                    n = 2;
                 else if (hoelzchen % 4 == 0)
                     n = 3;
                 else
-                    n = 2;
+                    n = 1;
             } else {
                 if (hoelzchen == 4)
                     n = 3;

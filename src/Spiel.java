@@ -33,10 +33,10 @@ public class Spiel {
 
             if (spieler1Beginnt) {
                 System.out.println(spieler1.getName() + " beginnt.");
-                spielen(spieler1, spieler2);
+                spielBeginnen(spieler1, spieler2);
             } else {
                 System.out.println(spieler2.getName() + " beginnt.");
-                spielen(spieler2, spieler1);
+                spielBeginnen(spieler2, spieler1);
             }
 
             spieler1Beginnt = !spieler1Beginnt;
@@ -51,16 +51,16 @@ public class Spiel {
         System.out.println();
     }
 
-    public static void spielen(Spieler erster, Spieler zweiter) {
+    public static void spielBeginnen(Spieler erster, Spieler zweiter) {
         Schachtel schachtel = zweiter.hoelzchenLegen();
-        new Spiel(erster, zweiter, schachtel).spielen();
+        new Spiel(erster, zweiter, schachtel).spielBeginnen();
     }
 
     public Schachtel getSchachtel() {
         return schachtel;
     }
 
-    public void spielen() {
+    public void spielBeginnen() {
         boolean turn1 = true;
 
         while(schachtel.getHoelzchen() > 0)
