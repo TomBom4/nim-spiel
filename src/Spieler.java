@@ -61,6 +61,10 @@ public class Spieler {
                 }
             }
 
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {}
+
             System.out.println("Der Computer zieht " + n + " Hölzchen");
 
             return n;
@@ -81,6 +85,9 @@ public class Spieler {
 
             Random random = new Random();
             int n = random.nextInt(7) * 4 + 13;
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {}
             System.out.println("Der Computer legt " + n + " Hölzchen in die Schachtel");
             return new Schachtel(n);
 
